@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>MYTEKSO | Soluciones Tecnológicas</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0d6efd;
+            --dark: #0f172a;
+            --light-bg: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            color: #334155;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            backdrop-filter: blur(10px);
+            background: var(--glass);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 12px 0;
+            z-index: 1030; /* Asegura que esté sobre el video */
+        }
+
+        .nav-logo {
+            height: 50px;
+            width: auto;
+            transition: 0.3s;
+        }
+
+        @media (min-width: 992px) {
+            .nav-logo { height: 70px; }
+        }
+
+        /* --- HERO CON VIDEO --- */
+        .hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Importante para el video */
+            color: white;
+            text-align: center;
+            padding: 120px 20px 80px;
+            /* Imagen de fondo para móviles o si el video falla */
+            background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Estilos del elemento video */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover; /* Mantiene proporción sin estirar */
+            z-index: 1;
+        }
+
+        /* Capa oscura sobre el video (Overlay) */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7); /* Ajusta la opacidad aquí (0.7) */
+            z-index: 2;
+        }
+
+        /* Contenedor del texto (encima de todo) */
+        .hero .container {
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 7vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        /* --- CARDS --- */
+        .card-service {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 20px;
+            padding: 30px 20px;
+            height: 100%;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card-service:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: var(--primary);
+        }
+
+        .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: rgba(13, 110, 253, 0.1);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .card-service h5 {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+
+        .card-service p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+#logo-footer-fijo {
+    display: inline-block !important;
+    margin-bottom: 20px !important;
+    /* Forzamos el alto primero */
+    height: 50px !important; 
+    width: auto !important;
+    /* Bloqueamos cualquier intento de crecer */
+    max-height: 50px !important; 
+    min-height: 50px !important;
+    filter: brightness(0) invert(1);
+    object-fit: contain; /* Asegura que no se estire feo */
+}
+
+        .contact-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-nav { text-align: center; padding: 20px 0; }
+            .btn-primary { width: 100%; }
+        }
+
+/* Esto obliga a las columnas a ser de ancho completo en celulares */
+@media (max-width: 576px) {
+    .col-12 {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .card-service {
+        margin-bottom: 10px;
+    }
+
+    /* Logo del footer realmente pequeño en móvil */
+    .footer-logo-container {
+        height: 40px !important; 
+    }
+    
+    .footer-logo-container img {
+        max-height: 40px !important;
+    }
+}        
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="logo.png" alt="MYTEKSO" class="nav-logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link fw-semibold px-3" href="#servicios">Servicios</a></li>
+                    <li class="nav-item mt-2 mt-lg-0"><a class="btn btn-primary rounded-pill px-4" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <video autoplay muted loop playsinline class="hero-video d-none d-md-block">
+            <source src="sw.mp4" type="video/mp4">
+            Tu navegador no soporta video HTML5.
+        </video>
+        
+        <div class="hero-overlay"></div>
+
+        <div class="container">
+            <h1>Soluciones Tecnológicas<br>a tu Medida</h1>
+            <p class="lead mb-4">Desarrollo e Innovación para tu empresa</p>
+            <a href="#servicios" class="btn btn-primary btn-lg rounded-pill px-5 py-3">Ver Catálogo Completo</a>
+        </div>
+    </section>
+
+    <section id="servicios" class="py-5">
+        <div class="container py-5">
+            <h2 class="text-center fw-800 mb-5">Nuestro Portafolio de Soluciones</h2>
+            <div class="row g-4">
+                
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-service">
+                        <div class="icon-wrapper"><i class="fas fa-terminal"></i></div>
+                        <h5>Software a la Medida</h5>
+                        <p class="text-muted">Aplicaciones únicas creadas para optimizar tus flujos de trabajo.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-service">
+                        <div class="icon-wrapper"><i class="fas fa-lightbulb"></i></div>
+                        <h5>Consultoría IT</h5>
+                        <p class="text-muted">Asesoría estratégica para la selección e implementación de tecnologías.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-service">
+                        <div class="icon-wrapper"><i class="fas fa-file-contract"></i></div>
+                        <h5>Licenciamiento</h5>
+                        <p class="text-muted">Gestión de licencias comerciales con cumplimiento legal total.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-service">
+                        <div class="icon-wrapper"><i class="fas fa-headset"></i></div>
+                        <h5>Soporte Técnico</h5>
+                        <p class="text-muted">Asistencia técnica y mantenimiento preventivo para aplicaciones.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-service">
+                        <div class="icon-wrapper"><i class="fas fa-globe"></i></div>
+                        <h5>Creación de Páginas Web</h5>
+                        <p class="text-muted">Diseño web profesional, responsivo y optimizado para tu marca.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-service">
+                        <div class="icon-wrapper"><i class="fas fa-shopping-cart"></i></div>
+                        <h5>Tiendas Online</h5>
+                        <p class="text-muted">E-commerce robusto para vender tus productos las 24 horas.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-service">
+                        <div class="icon-wrapper"><i class="fas fa-envelope"></i></div>
+                        <h5>Correo Empresarial</h5>
+                        <p class="text-muted">Comunicación profesional segura con el dominio de tu empresa.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-service">
+                        <div class="icon-wrapper"><i class="fas fa-cloud"></i></div>
+                        <h5>Cloud Storage Pro</h5>
+                        <p class="text-muted">Moderniza tu infraestructura migrando datos a entornos cloud.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-service">
+                        <div class="icon-wrapper"><i class="fas fa-server"></i></div>
+                        <h5>Virtualización</h5>
+                        <p class="text-muted">Optimiza el hardware físico mediante entornos virtuales.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-service">
+                        <div class="icon-wrapper"><i class="fas fa-network-wired"></i></div>
+                        <h5>Redes Empresariales</h5>
+                        <p class="text-muted">Diseño y estructurado de redes cableadas e inalámbricas.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-service">
+                        <div class="icon-wrapper"><i class="fas fa-desktop"></i></div>
+                        <h5>Equipo de Cómputo</h5>
+                        <p class="text-muted">Suministro de hardware, laptops, servidores y periféricos.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-service">
+                        <div class="icon-wrapper"><i class="fas fa-video"></i></div>
+                        <h5>Sistemas CCTV</h5>
+                        <p class="text-muted">Instalación y monitoreo de videovigilancia de alta definición.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-service">
+                        <div class="icon-wrapper"><i class="fas fa-id-card"></i></div>
+                        <h5>Controles de Acceso</h5>
+                        <p class="text-muted">Gestión de seguridad perimetral, biométricos y tarjetas.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-service">
+                        <div class="icon-wrapper"><i class="fas fa-map-marker-alt"></i></div>
+                        <h5>GPS Precisión</h5>
+                        <p class="text-muted">Rastreo satelital y telemetría avanzada para flotas.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-service">
+                        <div class="icon-wrapper"><i class="fas fa-database"></i></div>
+                        <h5>Backup Empresarial</h5>
+                        <p class="text-muted">Tus datos siempre seguros y listos para recuperarse en segundos.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+<footer id="contacto" style="padding: 60px 0 30px; background: #0f172a;">
+    <div class="container text-center">
+        <img src="logoblanco.png" alt="MYTEKSO" id="logo-footer-fijo">
+        <p style="color: white; opacity: 0.8;">Monterrey, Nuevo León, México</p>
+        <p><a href="mailto:ventas@mytekso.com" class="contact-link" style="color: #0d6efd; text-decoration: none;">ventas@mytekso.com</a></p>
+        <p style="color: white; opacity: 0.5; font-size: 0.8rem; margin-top: 25px;">© 2026 MYTEKSO. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
